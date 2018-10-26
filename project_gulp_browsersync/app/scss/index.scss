@@ -1,0 +1,18 @@
+@import 'public.scss';
+/**index**/
+.welcome {
+  position: fixed;
+  margin: auto;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  background: url(../img/avatar-default.jpg);
+  background-size: 100%;
+  white-space: nowrap;
+  text-align: center;
+  line-height:14;
+  @include remCalc(width,80);
+  @include remCalc(height,80);
+  @include font-dpr(14px);
+}
