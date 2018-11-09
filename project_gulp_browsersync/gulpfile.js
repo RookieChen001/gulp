@@ -9,11 +9,11 @@ var gulp = require('gulp'),
     plugins = gulpLoadPlugins();
 
 //监听
-gulp.task('watch', ['browserSync'], function (){
-    gulp.watch('app/scss/**/*.scss', ['sass']);
+//gulp.task('watch', ['browserSync'], function (){
+    //gulp.watch('app/scss/**/*.scss', ['sass']);
     //gulp.watch('app/html/**/*.html', browserSync.reload);
     //gulp.watch('app/js/**/*.js', browserSync.reload);
-});
+//});
 
 //实时刷新
 gulp.task('browserSync',['sass'],function(){
@@ -26,7 +26,7 @@ gulp.task('browserSync',['sass'],function(){
     });
     browserSync.init({
         //设置监听的文件,以gulpfile.js所在的根目录未起点,如果不在根目录要加上路径,单个文件就用字符串,多个文件就用数组
-        files:['app/html/**/*.html','app/js/**/*.js'],
+        files:['app/html/**/*.html','app/js/**/*.js','app/scss/**/*.scss'],
         // 启动静态服务器,设置启动时打开的index.html的路径
         server: {
             baseDir: 'app',//文件目录
@@ -51,7 +51,7 @@ gulp.task('sass',['clean'],function () {
         .pipe(plugins.sass())//编译sass
         .pipe(plugins.csso())//压缩css
         .pipe(gulp.dest('app/css'))
-        .pipe(browserSync.reload({stream: true}));  // 调用 reload
+        //.pipe(browserSync.reload({stream: true}));  // 调用 reload
 });
 
 //CSS生成文件hash编码并生成 rev-manifest.json文件名对照映射
@@ -107,7 +107,7 @@ gulp.task('copyJsCommon',function(){
 
 //开发执行任务
 gulp.task('default', function (callback) {
-    runSequence(['browserSync', 'watch'],
+    runSequence(['browserSync'],
         callback
     )
 });
