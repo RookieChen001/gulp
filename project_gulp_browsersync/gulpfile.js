@@ -29,7 +29,7 @@ gulp.task('browserSync',['sass'],function(){
         files:['app/html/**/*.html','app/js/**/*.js','app/scss/**/*.scss'],
         // 启动静态服务器,设置启动时打开的index.html的路径
         server: {
-            baseDir: 'app',//文件目录
+            baseDir: ['app','app/html'],//文件目录
             middleware:[aipProxy],
             index: "html/index.html"//首页
         },
