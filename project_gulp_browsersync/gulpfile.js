@@ -66,6 +66,7 @@ gulp.task('revCss',['sass'],function(){
 //js生成文件hash编码并生成 rev-manifest.json文件名对照映射
 gulp.task('revJs',function(){
     return gulp.src('app/js/*.js')
+        .pipe(plugins.babel())
         .pipe(plugins.uglify({ mangle: false }))
         .pipe(plugins.rev())
         .pipe(gulp.dest('dist/js'))
